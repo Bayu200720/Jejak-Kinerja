@@ -73,9 +73,7 @@ export default function EvidencesPage() {
       <div className="card bg-background p-6 mb-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-sm font-medium">
-              File Bukti *</label
-            >
+            <label className="text-sm font-medium">File Bukti *</label>
             <input
               type="file"
               accept="image/*,application/pdf"

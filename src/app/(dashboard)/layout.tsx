@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { signOut } from "@/app/actions/auth";
 
 const navItems = [
   { href: "/dashboard", label: "Beranda" },
@@ -20,7 +21,7 @@ export default function DashboardLayout({
           <Link href="/" className="text-lg font-semibold">
             JEJAK KINERJA AI
           </Link>
-          <p className="text-xs text-muted-foreground">Role-aware (placeholder)</p>
+          <p className="text-xs text-muted-foreground">Sistem pencatatan kinerja ASN</p>
         </div>
         <nav className="flex flex-row flex-wrap gap-2 md:flex-col">
           {navItems.map((item) => (
@@ -33,9 +34,19 @@ export default function DashboardLayout({
             </Link>
           ))}
         </nav>
-        <div className="mt-6 rounded-md border bg-background p-3 text-xs text-muted-foreground">
-          <p className="font-medium text-foreground">Role (placeholder)</p>
-          <p>asn | supervisor | admin</p>
+        <div className="mt-6 space-y-3 rounded-md border bg-background p-3 text-xs text-muted-foreground">
+          <div>
+            <p className="font-medium text-foreground">Role (placeholder)</p>
+            <p>asn | supervisor | admin</p>
+          </div>
+          <form action={signOut}>
+            <button
+              type="submit"
+              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-medium text-foreground hover:bg-accent"
+            >
+              Keluar
+            </button>
+          </form>
         </div>
       </aside>
       <main className="flex-1 p-4 md:p-6">{children}</main>

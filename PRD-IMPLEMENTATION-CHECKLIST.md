@@ -21,8 +21,8 @@
 |---|---|---|---|
 | **JKI-010** | Login email/password (Supabase Auth) | ✅ | Form login (`/login`) + server action `signIn` (Supabase `signInWithPassword`) + validasi zod. |
 | **JKI-011** | Logout | ✅ | Tombol keluar di sidebar dashboard memanggil `signOut`. |
-| **JKI-012** | Reset password via email | ❌ | Belum dibuat (hanya catatan di UI). |
-| **JKI-013** | Redirect & navigasi per role | 🚧 | Middleware `updateSession` + redirect ke `/login`/`/dashboard`; logika role belum di-load dari DB. |
+| **JKI-012** | Reset password via email | ✅ | Form reset (`/reset-password`) + server action `resetPasswordRequest` + callback halaman set password baru (`/reset-callback`). |
+| **JKI-013** | Redirect & navigasi per role | ✅ | Middleware `updateSession` mengarahkan user belum login ke `/login`, user login ke `/dashboard`. Dashboard root (`/dashboard`) melakukan `getCurrentUserProfile` dan redirect ke `/dashboard/asn` / `/dashboard/supervisor` / `/dashboard/admin` berdasarkan role utama dari `profile_roles`. |
 | **JKI-014** | Manajemen profil dasar ASN | ❌ | Belum dibuat. |
 
 ---

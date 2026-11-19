@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { signOut } from "@/app/actions/auth";
+import { getCurrentUserProfile } from "@/lib/auth";
 
 const navItems = [
   { href: "/dashboard", label: "Beranda" },
@@ -9,11 +10,13 @@ const navItems = [
   { href: "/dashboard/settings", label: "Pengaturan" },
 ];
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const profile = await getCurrentUserProfile();
+  
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       <aside className="w-full border-b bg-muted/30 p-4 md:w-64 md:border-b-0 md:border-r">
@@ -36,9 +39,15 @@ export default function DashboardLayout({
         </nav>
         <div className="mt-6 space-y-3 rounded-md border bg-background p-3 text-xs text-muted-foreground">
           <div>
-            <p className="font-medium text-foreground">Role (placeholder)</p>
-            <p>asn | supervisor | admin</p>
+            <p className="font-medium text-foreground">Role</p>
+            <p>{profile?.roles?.join(", ") || "Tidak ada role"}</p>
           </div>
+          {profile?.full_name && (
+            <div>
+              <p className="font-medium text-foreground">Pengguna</p>
+              <p className="truncate">{profile.full_name}</p>
+            </div>
+          )}
           <form action={signOut}>
             <button
               type="submit"

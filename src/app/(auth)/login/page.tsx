@@ -97,7 +97,7 @@ export default function LoginPage() {
       </form>
 
       <p className="text-xs text-muted-foreground">
-        Jika lupa password, hubungi administrator (fitur reset belum tersedia di MVP).
+        Lupa password? <Link href="/reset-password" className="underline text-primary">Reset di sini</Link>.
       </p>
       <p className="text-sm">
         <Link href="/" className="text-muted-foreground underline hover:text-foreground">

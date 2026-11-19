@@ -1,0 +1,19 @@
+
+> jejak-kinerja-ai@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.18
+  - Local:        http://localhost:3001
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 10.8s (491 modules)
+ GET / 200 in 11638ms
+ ✓ Compiled in 1055ms (252 modules)
+ ✓ Compiled in 557ms (252 modules)
+ ✓ Compiled in 429ms (252 modules)
+ ✓ Compiled in 482ms (252 modules)
+ ✓ Compiled in 315ms (252 modules)

@@ -1,0 +1,58 @@
+
+> jejak-kinerja-ai@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.18
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 3.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 12.8s (491 modules)
+ GET / 200 in 13828ms
+ ✓ Compiled in 1187ms (252 modules)
+ ✓ Compiled in 559ms (252 modules)
+ ✓ Compiled in 353ms (252 modules)
+ ✓ Compiled in 348ms (252 modules)
+ ✓ Compiled in 390ms (252 modules)
+ ✓ Compiled in 876ms (252 modules)
+ ✓ Compiled in 347ms (252 modules)
+ ✓ Compiled in 263ms (252 modules)
+ ✓ Compiled in 711ms (252 modules)
+ ✓ Compiled in 313ms (252 modules)
+ ✓ Compiled in 680ms (252 modules)
+ ✓ Compiled in 343ms (252 modules)
+ ✓ Compiled in 281ms (252 modules)
+ ✓ Compiled in 452ms (252 modules)
+ ✓ Compiled in 314ms (252 modules)
+ ✓ Compiled in 553ms (252 modules)
+ ✓ Compiled in 371ms (252 modules)
+ ✓ Compiled in 260ms (252 modules)
+ ✓ Compiled in 550ms (252 modules)
+ ✓ Compiled in 381ms (252 modules)
+ ✓ Compiled in 402ms (252 modules)
+ ✓ Compiled in 594ms (252 modules)
+ ✓ Compiled in 671ms (252 modules)
+ ✓ Compiled in 358ms (252 modules)
+ ✓ Compiled in 566ms (252 modules)
+ ✓ Compiled in 661ms (252 modules)
+ ✓ Compiled in 333ms (252 modules)
+ ✓ Compiled in 838ms (252 modules)
+ ✓ Compiled in 673ms (252 modules)
+ ✓ Compiled in 629ms (252 modules)
+ ✓ Compiled in 493ms (252 modules)
+ ✓ Compiled in 435ms (252 modules)
+ ✓ Compiled in 635ms (252 modules)
+ ✓ Compiled in 585ms (252 modules)
+ ✓ Compiled in 801ms (252 modules)
+ ✓ Compiled in 521ms (252 modules)
+ ✓ Compiled in 404ms (252 modules)
+ ✓ Compiled in 378ms (252 modules)
+ ✓ Compiled in 446ms (252 modules)
+ ✓ Compiled in 689ms (252 modules)
+ ✓ Compiled in 704ms (252 modules)
+ ✓ Compiled in 626ms (252 modules)
+ ✓ Compiled in 664ms (252 modules)
+ ✓ Compiled in 471ms (252 modules)
+ ✓ Compiled in 846ms (252 modules)

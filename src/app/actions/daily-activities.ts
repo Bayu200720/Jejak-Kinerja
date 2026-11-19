@@ -39,6 +39,13 @@ export async function insertDailyActivity(formData: FormData) {
     return { error: "Format tanggal salah. Gunakan YYYY-MM-DD." };
   }
 
+  const deskripsi = String(formData.get("deskripsi") ?? "").trim();
+  const start_time = String(formData.get("start_time") ?? "").trim() || null;
+  const end_time = String(formData.get("end_time") ?? "").trim() || null;
+  const lokasi = String(formData.get("lokasi") ?? "").trim() || null;
+  const catatan = String(formData.get("catatan") ?? "").trim() || null;
+  const status = String(formData.get("status") ?? "draft");
+
   const supabase = await createClient();
   const { error } = await supabase
     .from("daily_activities")
@@ -47,7 +54,14 @@ export async function insertDailyActivity(formData: FormData) {
       asn_profile_id: profile.id,
       tanggal,
       nama_kegiatan,
-      status: "draft",
+      deskripsi: deskripsi || null,
+      volume_pekerjaan: volume || null,
+      satuan_output: satuan_output || null,
+      start_time,
+      end_time,
+      lokasi,
+      catatan,
+      status: status === "submitted" ? "submitted" : "draft",
     })
     .select();
 
@@ -66,7 +80,6 @@ export async function updateDailyActivity(id: string, formData: FormData) {
     return { error: "Anda harus login." };
   }
 
-  // Simpan tanpa cek izin kompleks (MVP); semua user bisa update aktivitas own
   const tanggal = String(formData.get("tanggal") ?? "").trim();
   const nama_kegiatan = String(formData.get("nama_kegiatan") ?? "").trim();
 
@@ -79,10 +92,38 @@ export async function updateDailyActivity(id: string, formData: FormData) {
     return { error: "Format tanggal salah. Gunakan YYYY-MM-DD." };
   }
 
+  const volume = formData.get("volume_pekerjaan") ? Number(formData.get("volume_pekerjaan")) : null;
+  const satuan_output = String(formData.get("satuan_output") ?? "").trim();
+
+  if (volume !== null && volume <= 0) {
+    return { error: "Volume harus lebih besar dari 0." };
+  }
+  if ((volume ?? 0) > 0 && !satuan_output) {
+    return { error: "Satuan output wajib diisi ketika volume di atas 0." };
+  }
+
+  const deskripsi = String(formData.get("deskripsi") ?? "").trim();
+  const start_time = String(formData.get("start_time") ?? "").trim() || null;
+  const end_time = String(formData.get("end_time") ?? "").trim() || null;
+  const lokasi = String(formData.get("lokasi") ?? "").trim() || null;
+  const catatan = String(formData.get("catatan") ?? "").trim() || null;
+  const status = String(formData.get("status") ?? "draft");
+
   const supabase = await createClient();
   const { error } = await supabase
     .from("daily_activities")
-    .update({ tanggal, nama_kegiatan })
+    .update({
+      tanggal,
+      nama_kegiatan,
+      deskripsi: deskripsi || null,
+      volume_pekerjaan: volume || null,
+      satuan_output: satuan_output || null,
+      start_time,
+      end_time,
+      lokasi,
+      catatan,
+      status: status === "submitted" ? "submitted" : "draft",
+    })
     .eq("id", id);
 
   if (error) {

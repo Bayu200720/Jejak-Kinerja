@@ -100,6 +100,9 @@ export default function LoginPage() {
         Lupa password? <Link href="/reset-password" className="underline text-primary">Reset di sini</Link>.
       </p>
       <p className="text-sm">
+        Belum punya akun? <Link href="/signup" className="text-primary underline">Daftar di sini</Link>.
+      </p>
+      <p className="text-sm">
         <Link href="/" className="text-muted-foreground underline hover:text-foreground">
           Kembali ke beranda
         </Link>

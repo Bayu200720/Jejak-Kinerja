@@ -45,98 +45,128 @@ export default function SignupPage() {
 
   if (isSuccess) {
     return (
-      <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-4 px-4">
-        <h1 className="text-2xl font-semibold">Daftar Berhasil</h1>
-        <p className="text-sm text-muted-foreground">
-          Akun Anda telah dibuat. Silakan cek email untuk verifikasi (jika diperlukan), lalu masuk.
-        </p>
-        <Link href="/login" className="text-sm text-primary underline">
-          Ke halaman login
-        </Link>
+      <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+            <svg className="h-8 w-8 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Daftar Berhasil</h1>
+          <p className="text-gray-600 mb-6">
+            Akun Anda telah dibuat. Silakan cek email untuk verifikasi (jika diperlukan), lalu masuk.
+          </p>
+          <Link href="/login" className="inline-block w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-4 rounded-lg transition-colors">
+            Ke halaman login
+          </Link>
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-4 px-4">
-      <h1 className="text-2xl font-semibold">Daftar Akun</h1>
-      <p className="text-sm text-muted-foreground">
-        Buat akun baru untuk mengakses aplikasi Jejak Kinerja.
-      </p>
-
-      {serverError && (
-        <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
-          {serverError}
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+              <svg className="h-6 w-6 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <span className="text-2xl font-bold text-primary">Jejak Kinerja</span>
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Buat Akun</h1>
+          <p className="text-gray-600">Daftar untuk mengakses seluruh fitur aplikasi</p>
         </div>
-      )}
 
-      <form
-        className="space-y-4 rounded-lg border p-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            autoComplete="email"
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-            placeholder="nama@instansi.go.id"
-            {...register("email")}
-          />
-          {errors.email && (
-            <p className="text-xs text-red-600">{errors.email.message}</p>
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          {serverError && (
+            <div className="mb-6 rounded-lg bg-red-50 border border-red-200 p-4">
+              <p className="text-sm text-red-800 flex items-center gap-2">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                {serverError}
+              </p>
+            </div>
           )}
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                autoComplete="email"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all ${errors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'}`}
+                placeholder="nama@instansi.go.id"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-sm text-red-600">{errors.email.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                Password <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="password"
+                type="password"
+                autoComplete="new-password"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all ${errors.password ? 'border-red-300 bg-red-50' : 'border-gray-300'}`}
+                placeholder="Minimal 6 karakter"
+                {...register("password")}
+              />
+              {errors.password && (
+                <p className="text-sm text-red-600">{errors.password.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                Konfirmasi Password <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="confirmPassword"
+                type="password"
+                autoComplete="new-password"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all ${errors.confirmPassword ? 'border-red-300 bg-red-50' : 'border-gray-300'}`}
+                placeholder="Ulangi password"
+                {...register("confirmPassword")}
+              />
+              {errors.confirmPassword && (
+                <p className="text-sm text-red-600">{errors.confirmPassword.message}</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? 'Memproses...' : 'Daftar'}
+            </button>
+          </form>
         </div>
 
-        <div className="space-y-2">
-          <label htmlFor="password" className="text-sm font-medium">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            autoComplete="new-password"
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-            placeholder="Minimal 6 karakter"
-            {...register("password")}
-          />
-          {errors.password && (
-            <p className="text-xs text-red-600">{errors.password.message}</p>
-          )}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600">
+            Sudah punya akun?{' '}
+            <Link href="/login" className="text-primary hover:text-primary/80 font-medium">
+              Masuk di sini
+            </Link>
+          </p>
         </div>
-
-        <div className="space-y-2">
-          <label htmlFor="confirmPassword" className="text-sm font-medium">
-            Konfirmasi Password
-          </label>
-          <input
-            id="confirmPassword"
-            type="password"
-            autoComplete="new-password"
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-            placeholder="Ulangi password"
-            {...register("confirmPassword")}
-          />
-          {errors.confirmPassword && (
-            <p className="text-xs text-red-600">{errors.confirmPassword.message}</p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-60"
-        >
-          {isSubmitting ? "Memproses..." : "Daftar"}
-        </button>
-      </form>
-
-      <p className="text-sm">
-        Sudah punya akun? <Link href="/login" className="text-primary underline">Masuk di sini</Link>.
-      </p>
+      </div>
     </main>
   );
 }

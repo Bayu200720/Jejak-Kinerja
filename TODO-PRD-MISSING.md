@@ -7,7 +7,7 @@ Checklist aksi untuk fitur yang masih 🚧/❌ pada `PRD-IMPLEMENTATION-CHECKLIS
 - [x] JKI-011 Logout — action + hapus session + redirect ke `/login`
 - [x] JKI-012 Reset password via email — form request (`/reset-password`) + action `resetPasswordRequest` + halaman set password (`/reset-callback`)
 - [x] JKI-013 Redirect & navigasi per role — middleware mengatur akses dasar; `/dashboard` redirect ke dashboard per role berdasarkan `profile_roles` (via `getCurrentUserProfile`)
-- [ ] JKI-014 Manajemen profil dasar ASN — halaman profil (lihat/edit terbatas, tidak ubah role sendiri)
+- [x] JKI-014 Manajemen profil dasar ASN — halaman profil (`/dashboard/settings`) lihat/edit nama dan NIP (server action `updateProfile`)
 
 ## E3. RHK & Kategori
 - [ ] JKI-030 CRUD aktivitas harian (draft/submitted) — form, list/filter, edit draft, submit, soft delete

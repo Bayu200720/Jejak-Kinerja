@@ -275,20 +275,22 @@ export default function AktivitasPage() {
           />
           <div className="mt-2 space-x-2">
             <button
+              type="button"
               onClick={() => handleAI("improve")}
               disabled={!formData.nama_kegiatan || !formData.deskripsi || aiLoading}
-              className="rounded-md bg-primary px-2 py-1 text-primary-foreground text-sm hover:bg-primary/90"
+              className="rounded-md bg-primary px-2 py-1 text-primary-foreground text-sm hover:bg-primary/90 disabled:opacity-50"
               title="Improve teks AI"
             >
-              AI Improve
+              {aiLoading && aiMode === "improve" ? "Memproses..." : "AI Improve"}
             </button>
             <button
+              type="button"
               onClick={() => handleAI("suggest")}
               disabled={!formData.nama_kegiatan || !formData.deskripsi || aiLoading}
-              className="rounded-md bg-secondary px-2 py-1 text-secondary text-sm hover:bg-secondary/90"
+              className="rounded-md bg-secondary px-2 py-1 text-secondary text-sm hover:bg-secondary/90 disabled:opacity-50"
               title="Suggest RHK AI"
             >
-              RHK Suggest
+              {aiLoading && aiMode === "suggest" ? "Memproses..." : "RHK Suggest"}
             </button>
           </div>
         </div>
@@ -301,22 +303,83 @@ export default function AktivitasPage() {
             value={formData.deskripsi}
             onChange={(e) => {
               setFormData((prev) => ({ ...prev, deskripsi: e.target.value }));
-              // Auto-clear AI result when user edits
               setAiMode(null);
               setAiResult(null);
             }}
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary resize-y"
-            placeholder="Tuliskan deskkripsi aktivitas..."
+            placeholder="Tuliskan deskripsi aktivitas..."
           ></textarea>
-          {aiMode && (
-            <div className="mt-2 p-3 border rounded-md border-primary/20">
-              <p className="text-xs text-primary">{aiMode === "improve" ? "Improve" : "Suggest RHK"}: {aiResult}</p>
-              {aiFallback && <p className="text-xs text-muted-foreground">(Fallback manual)</p>}
-              <div className="mt-2 space-x-2">
+          {aiLoading && (
+            <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-center gap-2">
+              <div className="animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+              <span className="text-sm text-blue-700">Memproses AI... Mohon tunggu.</span>
+            </div>
+          )}
+          {aiMode && aiResult && !aiLoading && (
+            <div className="mt-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-sm font-semibold text-blue-900">
+                  {aiMode === "improve" ? "✨ Hasil Perbaikan AI:" : "💡 Saran RHK:"}
+                </p>
+                {aiFallback && (
+                  <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">
+                    Mode Offline
+                  </span>
+                )}
+              </div>
+              {aiMode === "improve" ? (
+                <div className="text-sm text-gray-800 whitespace-pre-wrap bg-white p-3 rounded border border-blue-100 leading-relaxed">
+                  {aiResult as string}
+                </div>
+              ) : (
+                <ul className="space-y-2">
+                  {(aiResult as string[]).map((item, idx) => (
+                    <li key={idx} className="bg-white p-2 rounded border border-blue-100 text-sm text-gray-800">
+                      {idx + 1}. {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div className="mt-3 flex flex-wrap gap-2">
+                {aiMode === "improve" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData((prev) => ({ ...prev, deskripsi: aiResult as string }));
+                      setAiMode(null);
+                      setAiResult(null);
+                    }}
+                    className="px-3 py-1.5 bg-green-600 text-white rounded text-sm hover:bg-green-700 transition-colors"
+                  >
+                    Gunakan Hasil Ini
+                  </button>
+                )}
+                {aiMode === "suggest" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const suggestions = aiResult as string[];
+                      if (suggestions.length > 0) {
+                        setFormData((prev) => ({ 
+                          ...prev, 
+                          nama_kegiatan: suggestions[0].charAt(0).toUpperCase() + suggestions[0].slice(1)
+                        }));
+                      }
+                      setAiMode(null);
+                      setAiResult(null);
+                    }}
+                    className="px-3 py-1.5 bg-green-600 text-white rounded text-sm hover:bg-green-700 transition-colors"
+                  >
+                    Gunakan Saran Pertama
+                  </button>
+                )}
                 <button
-                  onClick={() => setAiMode(null)}
-                  className="rounded-md bg-secondary px-2 py-1 text-secondary text-sm"
-                  title="Batal AI"
+                  type="button"
+                  onClick={() => {
+                    setAiMode(null);
+                    setAiResult(null);
+                  }}
+                  className="px-3 py-1.5 bg-gray-200 text-gray-700 rounded text-sm hover:bg-gray-300 transition-colors"
                 >
                   Batal
                 </button>

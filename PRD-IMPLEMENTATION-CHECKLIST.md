@@ -33,7 +33,7 @@
 |---|---|---|---|
 | **JKI-030** | CRUD aktivitas harian (draft/submitted) | ✅ | Halaman `/dashboard/aktivitas` + server actions CRUD (insert/update/delete/list). |
 | **JKI-031** | Autosave/draft recovery | ❌ | Belum dibuat. |
-| **JKI-032** | Validasi inline & pencocokan volume/satuan | ❌ | Belum dibuat. |
+| **JKI-032** | Validasi inline & pencocokan volume/satuan | ✅ | Validasi di server action `insertDailyActivity`: volume > 0, satuan output wajib jika volume > 0. Pesan error tampil inline. |
 
 ---
 

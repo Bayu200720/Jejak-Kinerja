@@ -10,7 +10,7 @@ Checklist aksi untuk fitur yang masih 🚧/❌ pada `PRD-IMPLEMENTATION-CHECKLIS
 - [x] JKI-014 Manajemen profil dasar ASN — halaman profil (`/dashboard/settings`) lihat/edit nama dan NIP (server action `updateProfile`)
 
 ## E3. RHK & Kategori
-- [ ] JKI-030 CRUD aktivitas harian (draft/submitted) — form, list/filter, edit draft, submit, soft delete
+- [x] JKI-030 CRUD aktivitas harian (draft/submitted) — form, list/filter, edit draft, submit, soft delete
 - [ ] JKI-031 Autosave/draft recovery — indikator tersimpan + recovery
 - [ ] JKI-032 Validasi inline & pencocokan volume/satuan — pesan error inline + aturan terdokumentasi
 

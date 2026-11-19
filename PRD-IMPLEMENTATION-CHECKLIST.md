@@ -31,7 +31,7 @@
 
 | Tiket | Deskripsi | Status | Catatan |
 |---|---|---|---|
-| **JKI-030** | CRUD aktivitas harian (draft/submitted) | ❌ | Belum dibuat halaman/form. |
+| **JKI-030** | CRUD aktivitas harian (draft/submitted) | ✅ | Halaman `/dashboard/aktivitas` + server actions CRUD (insert/update/delete/list). |
 | **JKI-031** | Autosave/draft recovery | ❌ | Belum dibuat. |
 | **JKI-032** | Validasi inline & pencocokan volume/satuan | ❌ | Belum dibuat. |
 

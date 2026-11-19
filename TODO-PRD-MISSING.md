@@ -3,10 +3,10 @@
 Checklist aksi untuk fitur yang masih 🚧/❌ pada `PRD-IMPLEMENTATION-CHECKLIST.md`.
 
 ## E2. Autentikasi & Profil
-- [ ] JKI-010 Login email/password (Supabase Auth) — form aktif + server action + redirect role
-- [ ] JKI-011 Logout — action + hapus session + redirect
+- [x] JKI-010 Login email/password (Supabase Auth) — form aktif + server action + redirect dasar ke `/dashboard`
+- [x] JKI-011 Logout — action + hapus session + redirect ke `/login`
 - [ ] JKI-012 Reset password via email — request + halaman set password
-- [ ] JKI-013 Redirect & navigasi per role — middleware + guard rute per role
+- [ ] JKI-013 Redirect & navigasi per role — middleware + guard rute per role (role dari DB belum di-load)
 - [ ] JKI-014 Manajemen profil dasar ASN — halaman profil (lihat/edit terbatas, tidak ubah role sendiri)
 
 ## E3. RHK & Kategori

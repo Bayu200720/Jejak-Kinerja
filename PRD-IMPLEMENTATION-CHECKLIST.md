@@ -41,7 +41,7 @@
 
 | Tiket | Deskripsi | Status | Catatan |
 |---|---|---|---|
-| **JKI-040** | Upload bukti (max 5, 5MB, allowlist) + validasi | ❌ | Belum dibuat. |
+| **JKI-040** | Upload bukti (max 5, ≤5MB, allowlist) + validasi | ✅ | Halaman `/dashboard/evidences?activity_id=...` + server action `uploadEvidence` + validasi ekstensi/UKM/ukuran di client + preview + simpan ke `activity_evidences`. |
 | **JKI-041** | Preview, caption, kompresi client-side | ❌ | Belum dibuat. |
 | **JKI-042** | Signed URL (TTL 15 menit) + hapus soft-delete + audit trail | ❌ | Belum dibuat. |
 

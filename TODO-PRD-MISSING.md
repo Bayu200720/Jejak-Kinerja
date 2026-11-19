@@ -15,7 +15,7 @@ Checklist aksi untuk fitur yang masih 🚧/❌ pada `PRD-IMPLEMENTATION-CHECKLIS
 - [ ] JKI-032 Validasi inline & pencocokan volume/satuan — pesan error inline + aturan terdokumentasi
 
 ## E4. Bukti Pendukung
-- [ ] JKI-040 Upload bukti (max 5, ≤5MB, allowlist) + validasi ekstensi/MIME/magic bytes
+- [x] JKI-040 Upload bukti (max 5, ≤5MB, allowlist) + validasi ekstensi/MIME/magic bytes
 - [ ] JKI-041 Preview, caption, kompresi client-side (gambar)
 - [ ] JKI-042 Signed URL TTL 15 menit + hapus soft-delete metadata + audit trail
 
